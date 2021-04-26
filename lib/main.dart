@@ -11,9 +11,23 @@ class XylophoneApp extends StatelessWidget {
     player.play('note$sound.wav');
   }
 
+  Expanded bulidKey({Color color, int sound}) {
+    return Expanded(
+      // ignore: deprecated_member_use
+      child: FlatButton(
+        color: color,
+        onPressed: () {
+          soundPlayer(sound);
+        },
+        child: Text('Click me'),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.black,
         body: SafeArea(
@@ -21,69 +35,13 @@ class XylophoneApp extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             // ignore: deprecated_member_use
             children: <Widget>[
-              // ignore: deprecated_member_use
-              Expanded(
-                child: FlatButton(
-                  color: Colors.red,
-                  onPressed: () {
-                    soundPlayer(1);
-                  },
-                ),
-              ),
-              // ignore: deprecated_member_use
-              Expanded(
-                child: FlatButton(
-                  color: Colors.orange,
-                  onPressed: () {
-                    soundPlayer(2);
-                  },
-                ),
-              ),
-              // ignore: deprecated_member_use
-              Expanded(
-                child: FlatButton(
-                  color: Colors.yellow,
-                  onPressed: () {
-                    soundPlayer(3);
-                  },
-                ),
-              ),
-              // ignore: deprecated_member_use
-              Expanded(
-                child: FlatButton(
-                  color: Colors.green,
-                  onPressed: () {
-                    soundPlayer(4);
-                  },
-                ),
-              ),
-              // ignore: deprecated_member_use
-              Expanded(
-                child: FlatButton(
-                  color: Colors.cyan,
-                  onPressed: () {
-                    soundPlayer(5);
-                  },
-                ),
-              ),
-              // ignore: deprecated_member_use
-              Expanded(
-                child: FlatButton(
-                  color: Colors.blue,
-                  onPressed: () {
-                    soundPlayer(6);
-                  },
-                ),
-              ),
-              // ignore: deprecated_member_use
-              Expanded(
-                child: FlatButton(
-                  color: Colors.purpleAccent,
-                  onPressed: () {
-                    soundPlayer(7);
-                  },
-                ),
-              ),
+              bulidKey(color: Colors.red, sound: 1),
+              bulidKey(color: Colors.orange, sound: 2),
+              bulidKey(color: Colors.yellow, sound: 3),
+              bulidKey(color: Colors.green, sound: 4),
+              bulidKey(color: Colors.cyan, sound: 5),
+              bulidKey(color: Colors.blue, sound: 6),
+              bulidKey(color: Colors.purpleAccent, sound: 7),
             ],
           ),
         ),
